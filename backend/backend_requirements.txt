@@ -1,0 +1,5 @@
+fastapi
+pymupdf
+numpy
+sentence-transformers
+chromadb

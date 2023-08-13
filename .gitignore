@@ -1,0 +1,3 @@
+llama_model/*
+!llama_model/add_model_weights_here.txt
+llama

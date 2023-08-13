@@ -1,0 +1,24 @@
+services:
+  model:
+    build: ./model
+    ports:
+      - 8000:8000 # Expose fastapi
+    # enable GPU
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+    # Mount model directory in container
+    volumes:
+      - ./llama_model:/home/llama_model
+  backend:
+    build: ./backend
+    ports:
+      - 8050:8000 # Expose fastapi
+  frontend:
+    build: ./frontend
+    ports:
+      - 1234:8501 # Expose streamlit
